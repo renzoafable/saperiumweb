@@ -1,7 +1,7 @@
 
 var SqlString = require('sqlstring');
 
-const repoHome = function (db) {
+const homeRepo = function (db) {
     const repo = {
         editHome: (aboutUs, careers, services, contact_us, application) => {
             return new Promise((resolve, reject) => {
@@ -20,4 +20,4 @@ const repoHome = function (db) {
     return repo;
 }
 
-module.exports = repoHome;
+module.exports = homeRepo;

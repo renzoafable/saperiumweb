@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
 const Http = require("http");
-
+const router = require('./router');
 const db = require('./database/index');
 
 const MySQLStore = store(session);
@@ -40,7 +40,7 @@ app.use(
     expiration: 86400000
   })
 );
-
+app.use('/api', router);
 // listen to port
 const port = process.env.PORT || 3001;
 http.listen(port, () => {
