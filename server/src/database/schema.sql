@@ -19,13 +19,11 @@ CREATE TABLE IMAGE (
 
 CREATE TABLE HOME (
     home_id INT DEFAULT 1,
-    image_id INT NOT NULL,
     about_us LONGTEXT NOT NULL,
     careers LONGTEXT NOT NULL,
     services LONGTEXT NOT NULL,
     contact_us LONGTEXT NOT NULL,
-    appication LONGTEXT NOT NULL,
-    FOREIGN KEY (image_id) REFERENCES IMAGE(image_id),
+    application LONGTEXT NOT NULL,
     PRIMARY KEY (home_id)
 );
 
@@ -35,19 +33,14 @@ CREATE TABLE TESTIMONIAL (
     name VARCHAR(100) NOT NULL,
     title VARCHAR(100) NOT NULL,
     image_id INT NOT NULL,
-    page_id INT NOT NULL,
     FOREIGN KEY (image_id) REFERENCES IMAGE(image_id),
     PRIMARY KEY (testimonial_id)
 );
 
 CREATE TABLE ABOUT (
     about_id INT DEFAULT 2,
-    testimonial_id INT NOT NULL,
     title VARCHAR(100) NOT NULL,
     body LONGTEXT NOT NULL,
-    image_id INT NOT NULL,
-    FOREIGN KEY (image_id) REFERENCES IMAGE(image_id),
-    FOREIGN KEY (testimonial_id) REFERENCES TESTIMONIAL(testimonial_id),
     PRIMARY KEY (about_id)
 );
 
@@ -69,12 +62,6 @@ CREATE TABLE SERVICES (
     PRIMARY KEY (services_id)
 );
 
-CREATE TABLE PHONE (
-    phone_id INT NOT NULL AUTO_INCREMENT,
-    number VARCHAR(20) NOT NULL,
-    PRIMARY KEY (phone_id)
-);
-
 CREATE TABLE MESSAGE (
     message_id INT NOT NULL AUTO_INCREMENT,
     email VARCHAR(100) NOT NULL,
@@ -86,9 +73,18 @@ CREATE TABLE MESSAGE (
 
 CREATE TABLE CONTACT_US (
     contact_us_id INT DEFAULT 5,
+    title VARCHAR(100) NOT NULL,
     address VARCHAR(200) NOT NULL,
-    phone_id INT NOT NULL,
+    body LONGTEXT NOT NULL,
     PRIMARY KEY (contact_us_id)
+);
+
+CREATE TABLE PHONE (
+    phone_id INT NOT NULL AUTO_INCREMENT,
+    number VARCHAR(50) NOT NULL,
+    contact_us_id INT NOT NULL,
+    FOREIGN KEY (contact_us_id) REFERENCES CONTACT_US(contact_us_id),
+    PRIMARY KEY (phone_id)
 );
 
 CREATE TABLE QUESTION (
@@ -137,4 +133,3 @@ CREATE TABLE USER (
   PRIMARY KEY (user_id)
 );
 
-INSERT INTO USER VALUES (NULL, "admin", sha2("admin", 256));
