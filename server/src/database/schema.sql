@@ -133,3 +133,89 @@ CREATE TABLE USER (
   PRIMARY KEY (user_id)
 );
 
+
+INSERT INTO USER VALUES (NULL, "admin", sha2("admin", 256));
+INSERT INTO IMAGE VALUES(NULL, "123.jpg", 1);
+
+INSERT INTO HOME 
+                VALUES (    1,
+                            "Our company is all about extraordinary individuals who love technology...",
+                            "We are a team of passionate, knowledge-hungry, dynamic and brave individuals...",
+                            "Our customers want to enjoy the process of building software together...",
+                            "We are excited to hear from you! For questions about services: services@saperium.com",
+                            "sydney gandaaaaa"
+                        );
+
+INSERT INTO TESTIMONIAL 
+                VALUES (    NULL,
+                            "Any greate change in the world started with someone or some group of people that had an idea and the courage to act on it. They wanted to break free.",
+                            "John Lauer",
+                            "President",
+                            1
+                        );      
+
+INSERT INTO ABOUT 
+                VALUES (    2,
+                            "About Saperium",
+                            "Where do great things come from? It’s not about great companies; it’s not about great organizations. It’s about people doing extraordinary things. Saperium is an elite software company aimed to revolutionize I.T. outsourcing in the Philippines. The team is headed by John Lauer, (http://www.linkedin.com/in/lauerjohn) a former senior executive of Microsoft Corporation. The word Saperium is derived from the Latin sapere aude which means “Dare to be wise!” Our company is all about extraordinary individuals who love technology and want to use their talents to break away from the pack and do great things."
+                        );
+
+INSERT INTO CAREERS
+                VALUES (    3,
+                            "Careers",
+                            "We are in the process of building a team of extraordinary people – all passionate, knowledge-hungry, dynamic, and brave individuals collaborating to do great things with technology.
+Our company is made of individuals who:
+Love technology
+Are the top 1% of developers in the Philippines
+Graduated from a prestigious university
+Hate cheap outsourcing
+Want to work with the smartest people
+Want to add great projects to their list of accomplishments
+Have the talent to build a great company in the Philippines
+Want to make great money
+Want to work with U.S. customers
+All candidates must pass a challenging technical examination and have a proven track record of technical accomplishments. 
+ 
+We are on the lookout for Software Architects and Senior Software Engineers. We are particularly interested in candidates with expertise on the Microsoft platform.
+
+For enquiries about careers or to submit your CV: careers@saperium.com
+All information will be kept strictly confidential.
+
+Successfully refer a developer to us and receive 1,000 USD or an iPad 2. The first person to refer someone who gets hired qualifies for the prize.",
+                            1
+                        );
+
+INSERT INTO SERVICES
+                VALUES (    4,
+                            "Services",
+                            "Really great software developers are hard to find. The difference between good programmers and extraordinary programmers is exponential. Great programmers like to work with other great programmers. They like to be in an environment that is solely focused on creating awesome software. They do not like to work for large companies with hundreds of cubicles filled with average developers. They do not like to work inside of companies that are not purely focused on the art and magic of great software. They like to choose the projects they work on. They love working closely with customers committed to shipping a quality product so users can experience what they built.
+
+We have put together a team of extraordinary programmers.
+
+Customers like working with developers committed to delivering a quality product on time and on budget. They want developers that do not overpromise but deliver what they say they will deliver. Customers like developers that stay in close communication and are flexible. Customers like to see working code as the project passes each milestone. Customers want to work with experts who can point out areas not previously considered. Customers want to enjoy the process of building software together.
+If you think your project or product might be a good fit with our company, we would love to hear from you. Please contact us at services@saperium.com or call us at +63.2.502.0942.",
+                            1
+                        );
+
+INSERT INTO CONTACT_US
+                VALUES (    5,
+                            "Contact Us",
+                            "20/F Picadilly Star 4th Avenue corner 27th Street Fort Bonifacio Global City, Taguig Philippines 1624",
+                            "We’re excited to hear from you!
+For questions about services: services@saperium.com
+For enquiries about careers or to submit your CV: careers@saperium.com
+All information will be kept strictly confidential."
+                        );
+
+
+INSERT INTO PHONE VALUES (NULL, "+63.2.403.5519 loc. 202", 5);
+INSERT INTO PHONE VALUES (NULL, "+63.2.502.0942", 5);
+INSERT INTO PHONE VALUES (NULL, "+63.917.886.8497", 5);
+
+INSERT INTO MESSAGE
+                VALUES(     NULL,
+                            "cbcortez3@up.edu.ph",
+                            "Clarisse Sydney",
+                            "Cortez",
+                            "Hire me pleasezzzz"
+                    );
