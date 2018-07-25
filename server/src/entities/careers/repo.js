@@ -15,6 +15,19 @@ const repoCareers = function (db) {
                     return resolve(results)
                 });
             });
+        },
+        getCareers: () => {
+            return new Promise((resolve, reject) => {
+                const queryString = SqlString.format(
+                    `SELECT title, body FROM careers`
+                );
+
+                db.query(queryString, (err, results) => {
+                    if (err) return reject(500);
+                    console.log(results);
+                    return resolve(results);
+                });                
+            })
         }
     };
     return repo;

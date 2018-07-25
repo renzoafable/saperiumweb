@@ -12,9 +12,23 @@ const repoServices = function (db) {
 
                 db.query(queryString, (err, results) => {
                     if (err) return reject(500)
+                    console.log(results);
                     return resolve(results)
                 });
             });
+        },
+        getServices: () => {
+            return new Promise((resolve, reject) => {
+                const queryString = SqlString.format(
+                    `SELECT title, body FROM services`
+                );
+
+                db.query(queryString, (err, results) => {
+                    if (err) return reject(500);
+                    console.log(results);
+                    return resolve(results);
+                });                
+            })
         }
     };
     return repo;
