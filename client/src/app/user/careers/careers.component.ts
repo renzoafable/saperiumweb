@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CareersComponent implements OnInit {
 
+  title = 'Careers';
+  body = 'Sum stuff here';
   constructor() { }
 
   ngOnInit() {
