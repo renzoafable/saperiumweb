@@ -63,6 +63,23 @@ const repoContactUs = function (db) {
           return resolve();
         });
       });
+    },
+    addMessage: (email, first_name, last_name, body) => {
+      return new Promise((resolve, reject) => {
+        const values = [email, first_name, last_name, body];
+        const queryString = SqlString.format(
+          `CALL add_message(?, ?, ?, ?)`, values
+        );
+        
+        db.query(queryString, (err, result) => {
+          if (err) {
+            console.log(err.message);
+            return reject(500);
+          }
+
+          return resolve();
+        });
+      });
     }
   }
   return repo;

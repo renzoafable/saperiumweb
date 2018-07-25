@@ -123,6 +123,57 @@ const contactUsController = (repo) => {
           res.status(err);
           res.json({ status: err, message });
         });
+    },
+    addMessage: (req, res, next) => {
+      const { email, first_name, last_name, body } = req.body;
+
+      if (!email) {
+        res.status(400);
+        return res.json({
+          status: 1014, message: 'Email cannot be empty!'
+        });
+      }
+      if (!first_name) {
+        res.status(400);
+        return res.json({
+          status: 1015, message: 'First Name cannot be empty!'
+        });
+      }
+      if (!last_name) {
+        res.status(400);
+        return res.json({
+          status: 1017, message: 'Last Name cannot be empty!'
+        });
+      }
+      if (!body) {
+        res.status(400);
+        return res.json({
+          status: 1016, message: 'Body cannot be empty!'
+        });
+      }
+
+      repo.addMessage(email, first_name, last_name, body)
+        .then(() => {
+          res.status(200);
+          res.json({
+            status: 200,
+            message: 'Successfully added message'
+          });
+        })
+        .catch(err => {
+          let message = '';
+
+          switch (err) {
+            case 500:
+              message = 'Internal server error while adding phone number';
+              break;
+            default:
+              break;
+          }
+
+          res.status(err);
+          res.json({ status: err, message });
+        });
     }
   };
 

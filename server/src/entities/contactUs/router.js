@@ -10,5 +10,6 @@ router.put('/', contactUsCtrl.editContactUs);
 router.get('/', contactUsCtrl.getContactUs);
 router.get('/phones', contactUsCtrl.getPhoneNums);
 router.post('/phones', contactUsCtrl.addPhoneNums);
+router.post('/messages', contactUsCtrl.addMessage);
 
 module.exports = router;
