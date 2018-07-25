@@ -18,13 +18,13 @@ CREATE TABLE IMAGE (
 );
 
 CREATE TABLE HOME (
-    home_id INT DEFAULT 1,
+    id INT DEFAULT 1,
     about_us LONGTEXT NOT NULL,
     careers LONGTEXT NOT NULL,
     services LONGTEXT NOT NULL,
     contact_us LONGTEXT NOT NULL,
     application LONGTEXT NOT NULL,
-    PRIMARY KEY (home_id)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE TESTIMONIAL (
@@ -38,24 +38,24 @@ CREATE TABLE TESTIMONIAL (
 );
 
 CREATE TABLE ABOUT (
-    about_id INT DEFAULT 2,
+    id INT DEFAULT 2,
     title VARCHAR(100) NOT NULL,
     body LONGTEXT NOT NULL,
-    PRIMARY KEY (about_id)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE CAREERS (
-    careers_id INT DEFAULT 3,
+    id INT DEFAULT 3,
     title VARCHAR(100) NOT NULL,
     body LONGTEXT NOT NULL,
-    PRIMARY KEY (careers_id)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE SERVICES (
-    services_id INT DEFAULT 4,
+    id INT DEFAULT 4,
     title VARCHAR(100) NOT NULL,
     body LONGTEXT NOT NULL,
-    PRIMARY KEY (services_id)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE MESSAGE (
@@ -68,11 +68,11 @@ CREATE TABLE MESSAGE (
 );
 
 CREATE TABLE CONTACT_US (
-    contact_us_id INT DEFAULT 5,
+    id INT DEFAULT 5,
     title VARCHAR(100) NOT NULL,
     address VARCHAR(200) NOT NULL,
     body LONGTEXT NOT NULL,
-    PRIMARY KEY (contact_us_id)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE PHONE (
