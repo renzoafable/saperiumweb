@@ -1,9 +1,16 @@
 const express = require('express');
-const router = new express.Router();
-const db = require('./database/index');
+const router = express.Router();
 
-const homeRepo = require('./entities/home/repo')(db);
-const homeController = require('./entities/home/controller')(homeRepo);
-router.put('/home/edit',  homeController.editHome);
+const homeRouter = require('./entities/home/router');
+const aboutRouter = require('./entities/about/router');
+const applicationRouter = require('./entities/application/router');
+const careersRouter = require('./entities/careers/router');
+const contactUsRouter = require('./entities/contactUs/router');
+
+router.use('/home', homeRouter);
+router.use('/about', aboutRouter);
+router.use('/application', applicationRouter);
+router.use('/careers', careersRouter);
+router.use('/contactUs', contactUsRouter);
 
 module.exports = router;
