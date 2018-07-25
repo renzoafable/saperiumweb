@@ -29,15 +29,43 @@ const applicationController = (repo) =>{
             )
         },
         viewQuestions : (req, res, next) => {
-            repo.viewQuestions(email)
+            // repo.viewQuestions()
+            // .then(
+            //     result => {
+            //         res.status(200);
+            //         return res.json({
+            //             status: 200, message: 'Successfully viewed all questions!', data: result
+            //         });
+            //     }
+            // ).catch(
+            //     err => {
+            //         res.status(err);
+            //         return res.json({
+            //             status: err, message: 'Internal server error!'
+            //         });
+            //     }
+            // )
+            let questions;
+            let choices;
+
+            repo.viewQuestions()
             .then(
                 result => {
-                    res.status(200);
-                    return res.json({
-                        status: 200, message: 'Successfully viewed all questions!', data: result
+                    const multipleChoice = [];
+                    questions = result;
+                    questions.forEach(question => {
+                        if (question.type === "multiple"){
+                            multipleChoice.push(question);                            
+                        }
                     });
+
+                    return Promise.all(repo.viewChoices(multipleChoice));
                 }
-            ).catch(
+            )
+            .then(result => {
+                console.log(result);
+            })
+            .catch(
                 err => {
                     res.status(err);
                     return res.json({
@@ -76,6 +104,51 @@ const applicationController = (repo) =>{
                     res.status(200);
                     return res.json({
                         status: 200, message: 'Successfully add answer!'
+                    });
+                }
+            ).catch(
+                err => {
+                    res.status(err);
+                    return res.json({
+                        status: err, message: 'Internal server error!'
+                    });
+                }
+            )
+        },
+        viewAnswersByUser : (req, res, next) => {
+            const application_id = req.params.application_id;
+
+            if (!application_id){
+                res.status(400);
+                return res.json({
+                    status: 1011, message: 'Application Id cannot be empty!'
+                });
+            }
+
+            repo.viewAnswersByUser(application_id)
+            .then(
+                result => {
+                    res.status(200);
+                    return res.json({
+                        status: 200, message: 'Successfully viewed answers by users!', data: result
+                    });
+                }
+            ).catch(
+                err => {
+                    res.status(err);
+                    return res.json({
+                        status: err, message: 'Internal server error!'
+                    });
+                }
+            )
+        },
+        viewApplications : (req, res, next) => {
+            repo.viewApplications()
+            .then(
+                result => {
+                    res.status(200);
+                    return res.json({
+                        status: 200, message: 'Successfully viewed all applications', data: result
                     });
                 }
             ).catch(
