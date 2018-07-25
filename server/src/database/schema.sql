@@ -18,13 +18,13 @@ CREATE TABLE IMAGE (
 );
 
 CREATE TABLE HOME (
-    home_id INT DEFAULT 1,
+    id INT DEFAULT 1,
     about_us LONGTEXT NOT NULL,
     careers LONGTEXT NOT NULL,
     services LONGTEXT NOT NULL,
     contact_us LONGTEXT NOT NULL,
     application LONGTEXT NOT NULL,
-    PRIMARY KEY (home_id)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE TESTIMONIAL (
@@ -38,28 +38,24 @@ CREATE TABLE TESTIMONIAL (
 );
 
 CREATE TABLE ABOUT (
-    about_id INT DEFAULT 2,
+    id INT DEFAULT 2,
     title VARCHAR(100) NOT NULL,
     body LONGTEXT NOT NULL,
-    PRIMARY KEY (about_id)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE CAREERS (
-    careers_id INT DEFAULT 3,
+    id INT DEFAULT 3,
     title VARCHAR(100) NOT NULL,
     body LONGTEXT NOT NULL,
-    image_id INT NOT NULL,
-    FOREIGN KEY (image_id) REFERENCES IMAGE(image_id),
-    PRIMARY KEY (careers_id)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE SERVICES (
-    services_id INT DEFAULT 4,
+    id INT DEFAULT 4,
     title VARCHAR(100) NOT NULL,
     body LONGTEXT NOT NULL,
-    image_id INT NOT NULL,
-    FOREIGN KEY (image_id) REFERENCES IMAGE(image_id),
-    PRIMARY KEY (services_id)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE MESSAGE (
@@ -72,18 +68,16 @@ CREATE TABLE MESSAGE (
 );
 
 CREATE TABLE CONTACT_US (
-    contact_us_id INT DEFAULT 5,
+    id INT DEFAULT 5,
     title VARCHAR(100) NOT NULL,
     address VARCHAR(200) NOT NULL,
     body LONGTEXT NOT NULL,
-    PRIMARY KEY (contact_us_id)
+    PRIMARY KEY (id)
 );
 
 CREATE TABLE PHONE (
     phone_id INT NOT NULL AUTO_INCREMENT,
     number VARCHAR(50) NOT NULL,
-    contact_us_id INT NOT NULL,
-    FOREIGN KEY (contact_us_id) REFERENCES CONTACT_US(contact_us_id),
     PRIMARY KEY (phone_id)
 );
 
@@ -102,27 +96,20 @@ CREATE TABLE CHOICE (
     PRIMARY KEY (choice_id)
 );
 
-CREATE TABLE APPLY (
-    contact_us_id INT DEFAULT 6,
-    question_id INT NOT NULL,
-    FOREIGN KEY (question_id) REFERENCES QUESTION(question_id),
-    PRIMARY KEY (contact_us_id)
+CREATE TABLE APPLICATION (
+    application_id INT NOT NULL AUTO_INCREMENT,
+    email VARCHAR(50) NOT NULL,
+    PRIMARY KEY (application_id)
 );
 
 CREATE TABLE ANSWER (
     answer_id INT NOT NULL AUTO_INCREMENT,
     body LONGTEXT NOT NULL,
     question_id INT NOT NULL,
+    application_id INT NOT NULL,
     FOREIGN KEY (question_id) REFERENCES QUESTION(question_id),
+    FOREIGN KEY (application_id) REFERENCES APPLICATION(application_id),
     PRIMARY KEY (answer_id)
-);
-
-CREATE TABLE APPLICATION (
-    application_id INT NOT NULL AUTO_INCREMENT,
-    email VARCHAR(50) NOT NULL,
-    answer_id INT NOT NULL,
-    FOREIGN KEY (answer_id) REFERENCES ANSWER(answer_id),
-    PRIMARY KEY (application_id)
 );
 
 CREATE TABLE USER (
@@ -181,8 +168,7 @@ We are on the lookout for Software Architects and Senior Software Engineers. We 
 For enquiries about careers or to submit your CV: careers@saperium.com
 All information will be kept strictly confidential.
 
-Successfully refer a developer to us and receive 1,000 USD or an iPad 2. The first person to refer someone who gets hired qualifies for the prize.",
-                            1
+Successfully refer a developer to us and receive 1,000 USD or an iPad 2. The first person to refer someone who gets hired qualifies for the prize."
                         );
 
 INSERT INTO SERVICES
@@ -193,8 +179,7 @@ INSERT INTO SERVICES
 We have put together a team of extraordinary programmers.
 
 Customers like working with developers committed to delivering a quality product on time and on budget. They want developers that do not overpromise but deliver what they say they will deliver. Customers like developers that stay in close communication and are flexible. Customers like to see working code as the project passes each milestone. Customers want to work with experts who can point out areas not previously considered. Customers want to enjoy the process of building software together.
-If you think your project or product might be a good fit with our company, we would love to hear from you. Please contact us at services@saperium.com or call us at +63.2.502.0942.",
-                            1
+If you think your project or product might be a good fit with our company, we would love to hear from you. Please contact us at services@saperium.com or call us at +63.2.502.0942."
                         );
 
 INSERT INTO CONTACT_US
@@ -208,9 +193,9 @@ All information will be kept strictly confidential."
                         );
 
 
-INSERT INTO PHONE VALUES (NULL, "+63.2.403.5519 loc. 202", 5);
-INSERT INTO PHONE VALUES (NULL, "+63.2.502.0942", 5);
-INSERT INTO PHONE VALUES (NULL, "+63.917.886.8497", 5);
+INSERT INTO PHONE VALUES (NULL, "+63.2.403.5519 loc. 202");
+INSERT INTO PHONE VALUES (NULL, "+63.2.502.0942");
+INSERT INTO PHONE VALUES (NULL, "+63.917.886.8497");
 
 INSERT INTO MESSAGE
                 VALUES(     NULL,
@@ -219,3 +204,122 @@ INSERT INTO MESSAGE
                             "Cortez",
                             "Hire me pleasezzzz"
                     );
+
+DELIMITER GO 
+
+CREATE PROCEDURE add_image( file_path LONGTEXT, page_id INT )
+    BEGIN INSERT INTO IMAGE
+        VALUES (NULL, file_path, page_id);
+    END;
+GO
+
+CREATE PROCEDURE edit_home( about_us LONGTEXT, careers LONGTEXT, services LONGTEXT, contact_us LONGTEXT, application LONGTEXT )
+    BEGIN INSERT INTO HOME
+        VALUES (1, about_us, careers, services, contact_us, application);
+    END;
+GO
+
+CREATE PROCEDURE add_testimonial( note LONGTEXT, name VARCHAR(100), title VARCHAR(100), image_id INT )
+    BEGIN INSERT INTO TESTIMONIAL
+        VALUES (NULL, note, name, title, image_id);
+    END;
+GO
+
+CREATE PROCEDURE edit_testimonial( given_testimonial_id INT, given_note LONGTEXT, given_name VARCHAR(100), given_title VARCHAR(100), given_image_id INT )
+    BEGIN UPDATE TESTIMONIAL SET
+            note = given_note,
+            name = given_name,
+            title = given_title,
+            image_id = given_image_id
+        WHERE testimonial_id = given_testimonial_id;
+    END;
+GO
+
+CREATE PROCEDURE edit_about( given_title VARCHAR(100), given_body LONGTEXT )
+    BEGIN UPDATE ABOUT SET
+            title = given_title,
+            body = given_body;
+    END;
+GO
+
+CREATE PROCEDURE edit_careers( given_title VARCHAR(100), given_body LONGTEXT )
+    BEGIN UPDATE CAREERS SET
+            title = given_title,
+            body = given_body;
+    END;
+GO
+
+CREATE PROCEDURE edit_services( given_title VARCHAR(100), given_body LONGTEXT )
+    BEGIN UPDATE SERVICES SET
+            title = given_title,
+            body = given_body;
+    END;
+GO
+
+CREATE PROCEDURE add_message( email VARCHAR(100), first_name VARCHAR(50), last_name VARCHAR(50), body LONGTEXT )
+    BEGIN INSERT INTO MESSAGE
+        VALUES (NULL, email, first_name, last_name, body);
+    END;
+GO
+
+CREATE PROCEDURE edit_contact_us( given_title VARCHAR(100), given_address VARCHAR(200), given_body LONGTEXT )
+    BEGIN UPDATE CONTACT_US SET
+            title = given_title,
+            address = given_address,
+            body = given_body;
+    END;
+GO
+
+CREATE PROCEDURE add_phone( given_number VARCHAR(50) )
+   BEGIN INSERT INTO PHONE
+        VALUES (NULL, given_number);
+    END;
+GO
+
+CREATE PROCEDURE edit_phone( given_phone_id INT, given_number  VARCHAR(50))
+    BEGIN UPDATE PHONE SET
+            number = given_number
+        WHERE phone_id = given_phone_id;
+    END;
+GO
+
+CREATE PROCEDURE add_question( type ENUM("multiple", "paragraph", "file_upload"), body LONGTEXT )
+   BEGIN INSERT INTO QUESTION
+        VALUES (NULL, type, body);
+    END;
+GO
+
+CREATE PROCEDURE edit_question( given_question_id INT, given_type ENUM("multiple", "paragraph", "file_upload"), given_body LONGTEXT )
+    BEGIN UPDATE QUESTION SET
+            type = given_type,
+            body = given_body
+        WHERE question_id = given_question_id;
+    END;
+GO
+
+CREATE PROCEDURE add_choice( question_id INT, body LONGTEXT)
+   BEGIN INSERT INTO CHOICE
+        VALUES (NULL, question_id, body);
+    END;
+GO
+
+CREATE PROCEDURE edit_choice( given_choice_id INT, given_body LONGTEXT )
+    BEGIN UPDATE CHOICE SET
+            body = given_body
+        WHERE choice_id = given_choice_id;
+    END;
+GO
+
+CREATE PROCEDURE add_answer( body LONGTEXT, question_id INT , application_id INT )
+   BEGIN INSERT INTO ANSWER
+        VALUES (NULL, body, question_id, application_id);
+    END;
+GO
+
+CREATE PROCEDURE add_application( given_email VARCHAR(50) )
+   BEGIN INSERT INTO APPLICATION
+        VALUES (NULL, given_email);
+    END;
+GO
+
+DELIMITER ;
