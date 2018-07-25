@@ -1,7 +1,6 @@
 const homeController = (repo) =>{
     const controller = {
         editHome : (req, res, next) => {
-            console.log("h")
             const aboutUs = req.body.aboutUs;
             const careers = req.body.careers;
             const services = req.body.services;
@@ -47,6 +46,35 @@ const homeController = (repo) =>{
                         status: 200, message: 'Successfully edit home page!'
                     });
                 }
+            ).catch(
+                err => {
+                    res.status(500);
+                    return res.json({
+                        status: 500, message: 'Internal server error!'
+                    });
+                }
+            )
+        },
+        viewHome : (req, res, next) => {
+            let data;
+            let images;
+
+            repo.viewHome()
+            .then(
+                result => {
+                    data = result;
+                    return repo.getImages(data.home);
+                }
+            ).then(
+                result => {
+                    // res.status(200);
+                    // return res.json({
+                    //     status: 200, message: 'Successfully viewed home page!', data: result
+                    // });
+                    data = result;
+                    return repo.getImages(data);
+                }
+
             ).catch(
                 err => {
                     res.status(500);

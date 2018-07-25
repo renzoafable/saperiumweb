@@ -15,6 +15,18 @@ const homeRepo = function (db) {
                     return resolve(results)
                 });
             });
+        },
+        viewHome: () => {
+            return new Promise((resolve, reject) => {
+                const queryString = SqlString.format(
+                    `SELECT * FROM HOME;`
+                );
+
+                db.query(queryString, (err, results) => {
+                    if (err) return reject(500)
+                    return resolve(results)
+                });
+            });
         }
     }
     return repo;
