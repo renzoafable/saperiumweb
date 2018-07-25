@@ -11,7 +11,10 @@ const homeRepo = function (db) {
                 );
 
                 db.query(queryString, (err, results) => {
-                    if (err) return reject(500)
+                    if (err){
+                        console.log(err)
+                        return reject(500)
+                    }
                     return resolve(results)
                 });
             });
@@ -24,6 +27,21 @@ const homeRepo = function (db) {
 
                 db.query(queryString, (err, results) => {
                     if (err) return reject(500)
+                    return resolve(results[0])
+                });
+            });
+        },
+        getImages: (id) => {
+            return new Promise((resolve, reject) => {
+                const queryString = SqlString.format(
+                    `SELECT * FROM IMAGE where page_id = ?;`, id
+                );
+
+                db.query(queryString, (err, results) => {
+                    if (err){
+                        console.log(err)
+                        return reject(500)
+                    }
                     return resolve(results)
                 });
             });

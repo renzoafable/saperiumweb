@@ -3,5 +3,11 @@ a:link, a:hover, a:visited, a:active {
 }
 
 .navbar {
-  padding: 1em;
+  padding: .5em;
+  border-bottom: 1px solid #bfbfbf;
+  background-color: white;
+}
+
+.navbar-header img {
+  padding: 0;
 }

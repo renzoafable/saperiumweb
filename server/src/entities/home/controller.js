@@ -63,23 +63,24 @@ const homeController = (repo) =>{
             .then(
                 result => {
                     data = result;
-                    return repo.getImages(data.home);
+                    console.log(result)
+                    return repo.getImages(data.id);
                 }
             ).then(
                 result => {
-                    // res.status(200);
-                    // return res.json({
-                    //     status: 200, message: 'Successfully viewed home page!', data: result
-                    // });
-                    data = result;
-                    return repo.getImages(data);
+                    images = result;
+                    data.images = images;
+                    res.status(200);
+                    return res.json({
+                        status: 200, message: 'Successfully viewed home page!', data
+                    });
                 }
 
             ).catch(
                 err => {
-                    res.status(500);
+                    res.status(err);
                     return res.json({
-                        status: 500, message: 'Internal server error!'
+                        status: err, message: 'Internal server error!'
                     });
                 }
             )
