@@ -9,7 +9,7 @@ export class NavbarComponent implements OnInit {
 
   constructor() { }
 
-  isAdmin = false;
+  isAdmin = true;
 
   ngOnInit() {
   }
