@@ -27,6 +27,9 @@ export class AdmincareersComponent implements OnInit {
   htmlContent;
   isEditingTitle = false;
   isEditingBody = false;
+  
+
+ 
   getCareers() {
     this.careersService.getCareers().subscribe((result) => {
       this.title = result.result[0].title;
@@ -53,6 +56,8 @@ export class AdmincareersComponent implements OnInit {
   editBody() {
     this.isEditingBody = true;
   }
+
+ 
 
   ngOnInit() {
     this.getCareers();

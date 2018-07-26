@@ -1,3 +1,73 @@
-<p>
-  adminabout works!
-</p>
+<div class="jumbotron text-center">
+  ABOUT US ADMIN
+</div>
+
+<div class="container-fluid">
+  <div class="row text-center">
+    <div class="col-sm-4">
+      <div class="panel" *ngFor="let testimonial of testimonials">
+
+        <img src="../../../assets/johndoe.png" alt="Avatar">
+        <div>
+          <p class="data" [innerHTML]="testimonial.note"></p>
+          &nbsp;
+          <span class="glyphicon glyphicon-edit" (click)="editTestimonial(testimonial.note)"> </span>
+        </div>
+        <a></a>
+
+        <blockquote class="blockquote-reverse">
+          <h5>
+            <span [innerHTML]="testimonial.name" class="data"></span>
+            &nbsp;
+            <span class="glyphicon glyphicon-edit" (click)="editName(testimonial.name)"> </span>
+          </h5>
+          <h6>
+            <span [innerHTML]="testimonial.title"></span>
+            &nbsp;
+            <span class="glyphicon glyphicon-edit" (click)="editTitle(testimonial.title)"></span>
+          </h6>
+        </blockquote>
+        
+
+        <div *ngIf="isEditingTestimonial">
+          <angular-editor [config]="editorConfig" [(ngModel)]="contentTestimonial"></angular-editor>
+          <button (click)="saveTestimonial(testimonial.testimonial_id, contentTestimonial, testimonial.name, testimonial.title, testimonial.file_path)">Save</button>
+        </div>
+        <div *ngIf="isEditingName">
+          <angular-editor [config]="editorConfig" [(ngModel)]="contentName"></angular-editor>
+          <button (click)="saveTestimonial(testimonial.testimonial_id, testimonial.note, contentName, testimonial.title, testimonial.file_path)">Save</button>
+        </div>
+        <div *ngIf="isEditingTitle">
+          <angular-editor [config]="editorConfig" [(ngModel)]="contentTitle"></angular-editor>
+          <button (click)="saveTestimonial(testimonial.testimonial_id, testimonial.note, testimonial.name, contentTitle, testimonial.file_path)">Save</button>
+        </div>
+
+      </div>
+    </div>
+    <div class="col-sm-8">
+      <div>
+        <h3 [innerHTML]="data.title" class="data"></h3>
+        &nbsp;
+        <span class="glyphicon glyphicon-edit" (click)="editPageTitle(data.title)"> </span>
+      <div>
+  
+      <div>
+        <br>
+        <div [innerHTML]="data.body" class="mult"></div>
+        <span class="glyphicon glyphicon-edit" (click)="editPageBody(data.body)" style="float: right"> </span>
+        <br>
+      </div>
+
+      <div *ngIf="isEditingPageTitle">
+        <angular-editor [config]="editorConfig" [(ngModel)]="contentPageTitle"></angular-editor>
+        <button (click)="savePageTitle(contentPageTitle)">Save</button>
+      </div>
+      <div *ngIf="isEditingPageBody">
+        <angular-editor [config]="editorConfig" [(ngModel)]="contentPageBody"></angular-editor>
+        <button (click)="savePageBody(contentPageBody)">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- 
+     -->
