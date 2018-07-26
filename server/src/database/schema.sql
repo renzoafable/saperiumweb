@@ -220,19 +220,19 @@ CREATE PROCEDURE edit_home( given_about_us LONGTEXT, given_careers LONGTEXT, giv
     END;
 GO
 
-CREATE PROCEDURE add_testimonial( note LONGTEXT, name VARCHAR(100), title VARCHAR(100), image_id INT )
+CREATE PROCEDURE add_testimonial( note LONGTEXT, name VARCHAR(100), title VARCHAR(100), image_id INT, file_path LONGTEXT )
     BEGIN INSERT INTO TESTIMONIAL
         VALUES (NULL, note, name, title, image_id);
+        CALL add_image(file_path, 6);
     END;
 GO
 
-CREATE PROCEDURE edit_testimonial( given_testimonial_id INT, given_note LONGTEXT, given_name VARCHAR(100), given_title VARCHAR(100), given_image_id INT, file_path LONGTEXT )
+CREATE PROCEDURE edit_testimonial( given_testimonial_id INT, given_note LONGTEXT, given_name VARCHAR(100), given_title VARCHAR(100), given_image_id INT)
     BEGIN UPDATE TESTIMONIAL SET
             note = given_note,
             name = given_name,
             title = given_title
         WHERE testimonial_id = given_testimonial_id;
-        CALL add_image(file_path, 6);
     END;
 GO
 
