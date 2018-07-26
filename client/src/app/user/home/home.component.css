@@ -1,0 +1,12 @@
+.page-body {
+  font-size: 17px;
+}
+
+.row {
+  width: 90%;
+  margin: auto;
+}
+
+a:link, a:hover, a:visited, a:active {
+  text-decoration: none;
+}

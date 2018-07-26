@@ -2,11 +2,11 @@ var SqlString = require("sqlstring");
 
 const homeRepo = function(db) {
   const repo = {
-    editHome: (aboutUs, careers, services, contact_us, application) => {
+    editHome: (aboutUs, careers, services, contact_us) => {
       return new Promise((resolve, reject) => {
-        const values = [aboutUs, careers, services, contact_us, application];
+        const values = [aboutUs, careers, services, contact_us];
         const queryString = SqlString.format(
-          `CALL edit_home(?, ?, ?, ?, ?)`,
+          `CALL edit_home(?, ?, ?, ?)`,
           values
         );
 

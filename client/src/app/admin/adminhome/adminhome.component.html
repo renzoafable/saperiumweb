@@ -1,3 +1,23 @@
-<p>
-  adminhome works!
-</p>
+<div class="jumbotron text-center">
+  Home carousel
+</div>
+<div class="row">
+  <div *ngFor="let page of pages; let i = index" class="col-sm-3 text-center">
+    <div class="page-header">
+      <a [routerLink]="setRoute(page[0])">
+        <h3 [innerHTML]="setHeader(page[0])"></h3>
+      </a>
+      &nbsp;
+
+    </div>
+    <div class="page-body">
+      <p [innerHTML]="page[1]"></p>
+      &nbsp;
+      <span class="glyphicon glyphicon-edit" data-toggle="collapse" [attr.data-target]="'#' + page[0]"></span>
+      <div [attr.id]="page[0]" class="collapse">
+        <angular-editor [config]="editorConfig" [(ngModel)]="pagesCopy[i][1]"></angular-editor>
+        <button (click)="saveBody(page[0], pagesCopy[i][1])">Save</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,6 +13,7 @@ import { HomeComponent } from './user/home/home.component';
 import { LoginComponent } from './admin/login/login.component';
 import { NgModule } from '@angular/core';
 import { ServicesComponent } from './user/services/services.component';
+import { AdminhomeComponent } from './admin/adminhome/adminhome.component';
 
 const routes: Routes = [
   { path: 'about', component: AboutComponent },
@@ -25,7 +26,7 @@ const routes: Routes = [
   { path: 'apply/admin', component: AdminapplyComponent },
   { path: 'careers/admin', component: AdmincareersComponent },
   { path: 'contact-us/admin', component: AdmincontactUsComponent },
-  { path: 'home/admin', component: HomeComponent },
+  { path: 'home/admin', component: AdminhomeComponent },
   { path: 'services/admin', component: AdminservicesComponent },
   { path: 'login/admin', component: LoginComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },

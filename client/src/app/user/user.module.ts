@@ -7,11 +7,13 @@ import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { ServicesComponent } from './services/services.component';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
   ],
   declarations: [HomeComponent, AboutComponent, CareersComponent, ServicesComponent, ContactUsComponent, ApplyComponent],
 })

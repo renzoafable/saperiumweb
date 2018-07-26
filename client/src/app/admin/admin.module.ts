@@ -11,6 +11,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
+import { AppRoutingModule } from '../app-routing.module';
 
 @NgModule({
   imports: [
@@ -19,6 +20,7 @@ import { NgModule } from '@angular/core';
     AngularEditorModule,
     FormsModule,
     ReactiveFormsModule,
+    AppRoutingModule
   ],
   declarations: [LoginComponent, AdminhomeComponent, AdminaboutComponent,
     AdminapplyComponent, AdmincareersComponent, AdmincontactUsComponent, AdminservicesComponent]
