@@ -1,5 +1,7 @@
 <div class="jumbotron text-center">
   Services carousel
 </div>
-<h1>{{title}}</h1>
-<p>{{body}}</p>
+<div class="col-md-offset-2 col-md-8">
+  <div [innerHTML]="title"></div>
+  <div [innerHTML]="body"></div>
+</div>

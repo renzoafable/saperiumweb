@@ -1,3 +1,18 @@
 <div class="jumbotron text-center">
   Contact us image
 </div>
+<div class="body">
+  <div class="col-md-offset-2 col-md-4">
+    <div [innerHTML]="title"></div>
+    <h4>Address</h4>
+    <div [innerHTML]="address"></div>
+    <h4>Phone Numbers</h4>
+    <ul class="list-unstyled" *ngFor="let phone of phoneNums">
+      <li>{{phone.number}}</li>
+    </ul>
+  </div>
+  <div class="col-md-4">
+    <h3>Talk to us</h3>
+    <div [innerHTML]="body"></div>
+  </div>
+</div>
