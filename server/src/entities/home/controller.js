@@ -1,7 +1,6 @@
 const homeController = (repo) =>{
     const controller = {
         editHome : (req, res, next) => {
-            console.log("h")
             const aboutUs = req.body.aboutUs;
             const careers = req.body.careers;
             const services = req.body.services;

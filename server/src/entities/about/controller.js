@@ -33,6 +33,36 @@ const aboutController = (repo) =>{
                     });
                 }
             )
+        },
+        viewAbout : (req, res, next) => {
+            let data;
+            let images;
+
+            repo.viewAbout()
+            .then(
+                result => {
+                    data = result;
+                    console.log(data.id)
+                    return repo.getImages(data.id);
+                }
+            ).then(
+                result => {
+                    images = result;
+                    data.images = images;
+                    res.status(200);
+                    return res.json({
+                        status: 200, message: 'Successfully viewed about page!', data
+                    });
+                }
+
+            ).catch(
+                err => {
+                    res.status(err);
+                    return res.json({
+                        status: err, message: 'Internal server error!'
+                    });
+                }
+            )
         }
     };
 
