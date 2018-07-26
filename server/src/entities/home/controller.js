@@ -56,14 +56,16 @@ const homeController = (repo) =>{
             )
         },
         viewHome : (req, res, next) => {
-            let data;
+            let data = {};
             let images;
 
             repo.viewHome()
             .then(
                 result => {
-                    data = result;
-                    console.log(result)
+                    const { id } = result;
+                    delete result.id;
+                    data.id = id;
+                    data.pages = result;
                     return repo.getImages(data.id);
                 }
             ).then(
