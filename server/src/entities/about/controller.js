@@ -41,6 +41,11 @@ const aboutController = (repo) =>{
             .then(
                 result => {
                     data = result;
+                    return repo.getImages(2);
+                }
+            ).then(
+                result => {
+                    data.images = result;
                     return repo.getTestimonial();
                 }
             ).then(

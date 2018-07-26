@@ -41,6 +41,18 @@ const repoAbout = function (db) {
         });
       });
     },
+    getImages: (id) => {
+      return new Promise((resolve, reject) => {
+        const queryString = SqlString.format(
+          `SELECT * FROM IMAGE where page_id = ?`, id
+        );
+
+        db.query(queryString, (err, results) => {
+          if (err) return reject(500);
+          return resolve(results);
+        });
+      });
+    },
     addTestimonial: (note, name, title, file_path) => {
       return new Promise((resolve, reject) => {
         const values = [note, name, title, file_path];
