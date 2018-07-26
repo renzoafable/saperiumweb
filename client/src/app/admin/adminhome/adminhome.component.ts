@@ -78,12 +78,8 @@ export class AdminhomeComponent implements OnInit {
   }
 
   saveBody(index, body) {
-    // aboutUs, careers, services, contact_us
-    console.log(index);
-    console.log(body);
-
     this.data.pages[index] = body;
-    // console.log(this.data.pages);
+    
     const editBody = {
       aboutUs: this.data.pages.about_us,
       careers: this.data.pages.careers,
