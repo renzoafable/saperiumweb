@@ -4,7 +4,7 @@
 <div class="row">
   <div *ngFor="let page of pages" class="col-sm-3 text-center">
 
-    <a [routerLink]="setRoute(page[0])"><h3 class="page-header">{{setHeader(page[0])}}</h3></a>
-    <p class="page-body">{{page[1]}}</p>
+    <a [routerLink]="setRoute(page[0])"><h3 class="page-header" [innerHTML]="setHeader(page[0])"></h3></a>
+    <p class="page-body" [innerHTML]="page[1]"></p>
   </div>
 </div>
