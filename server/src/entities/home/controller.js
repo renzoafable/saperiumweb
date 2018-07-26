@@ -54,6 +54,38 @@ const homeController = (repo) =>{
                     });
                 }
             )
+        },
+        viewHome : (req, res, next) => {
+            let data = {};
+            let images;
+
+            repo.viewHome()
+            .then(
+                result => {
+                    const { id } = result;
+                    delete result.id;
+                    data.id = id;
+                    data.pages = result;
+                    return repo.getImages(data.id);
+                }
+            ).then(
+                result => {
+                    images = result;
+                    data.images = images;
+                    res.status(200);
+                    return res.json({
+                        status: 200, message: 'Successfully viewed home page!', data
+                    });
+                }
+
+            ).catch(
+                err => {
+                    res.status(err);
+                    return res.json({
+                        status: err, message: 'Internal server error!'
+                    });
+                }
+            )
         }
     };
 

@@ -325,4 +325,10 @@ CREATE PROCEDURE add_application( given_email VARCHAR(50) )
     END;
 GO
 
+CREATE PROCEDURE view_question()
+   BEGIN 
+        SELECT * FROM QUESTION NATURAL JOIN CHOICE;
+    END;
+GO
+
 DELIMITER ;

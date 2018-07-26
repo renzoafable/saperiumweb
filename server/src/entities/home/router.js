@@ -5,7 +5,7 @@ const db = require('../../database/index');
 const homeRepo = require('./repo')(db);
 const homeCtrl = require('./controller')(homeRepo);
 
-// place methods here
-
+router.get('/',  homeCtrl.viewHome);
+router.put('/',  homeCtrl.editHome);
 
 module.exports = router;
