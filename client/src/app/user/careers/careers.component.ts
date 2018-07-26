@@ -11,6 +11,8 @@ export class CareersComponent implements OnInit {
 
   title = 'Careers';
   body = 'Sum stuff here';
+  test = '<h1><b>Charan</b></h1>';
+  inputtext;
   constructor(private careersService: CareersService) { }
 
   getCareers() {

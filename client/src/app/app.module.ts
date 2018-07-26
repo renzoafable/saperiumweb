@@ -3,6 +3,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { CareersService } from './shared/services/careers.service';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '../../node_modules/@angular/common/http';
 import { NgModule } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
@@ -19,6 +20,7 @@ import { UserModule } from './user/user.module';
     AppRoutingModule,
     UserModule,
     AdminModule,
+    FormsModule,
   ],
   providers: [CareersService],
   bootstrap: [AppComponent]
