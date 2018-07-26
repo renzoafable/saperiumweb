@@ -12,21 +12,23 @@ export class AdmincareersComponent implements OnInit {
 
   constructor(private careersService: CareersService) { }
 
-  editorConfig: AngularEditorConfig = {
-    editable: true,
-    spellcheck: true,
-    height: '100px',
-    minHeight: '100px',
-    placeholder: 'Enter text here...',
-    translate: 'no',
-    uploadUrl: 'v1/images', // if needed
-  };
-
   title;
   body;
   htmlContent;
   isEditingTitle = false;
   isEditingBody = false;
+
+  editorConfig: AngularEditorConfig = {
+    editable: true,
+    spellcheck: true,
+    height: '100px',
+    minHeight: '100px',
+    placeholder: 'Enter text',
+    translate: 'no',
+    uploadUrl: 'v1/images', // if needed
+  };
+
+
   getCareers() {
     this.careersService.getCareers().subscribe((result) => {
       this.title = result.result[0].title;
@@ -42,7 +44,7 @@ export class AdmincareersComponent implements OnInit {
   }
 
   editTitle() {
-    this.isEditingTitle = true;
+    this.isEditingTitle = !this.isEditingTitle;
   }
 
   saveBody(text: string) {
@@ -51,7 +53,7 @@ export class AdmincareersComponent implements OnInit {
   }
 
   editBody() {
-    this.isEditingBody = true;
+    this.isEditingBody = !this.isEditingBody;
   }
 
   ngOnInit() {
