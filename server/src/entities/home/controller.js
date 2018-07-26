@@ -5,7 +5,6 @@ const homeController = (repo) =>{
             const careers = req.body.careers;
             const services = req.body.services;
             const contact_us = req.body.contact_us;
-            const application = req.body.application;
 
             if (!aboutUs){
                 res.status(400);
@@ -31,14 +30,8 @@ const homeController = (repo) =>{
                     status: 1004, message: 'Contact Us cannot be empty!'
                 });
             }
-            if (!application){
-                res.status(400);
-                return res.json({
-                    status: 1005, message: 'Application cannot be empty!'
-                });
-            }
 
-            repo.editHome(aboutUs, careers, services, contact_us, application)
+            repo.editHome(aboutUs, careers, services, contact_us)
             .then(
                 result => {
                     res.status(200);

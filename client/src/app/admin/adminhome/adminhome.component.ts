@@ -11,7 +11,7 @@ export class AdminhomeComponent implements OnInit {
   home;
   data;
   pages;
-  htmlContent = "";
+  pagesCopy;
 
   editorConfig: AngularEditorConfig = {
     editable: true,
@@ -36,7 +36,10 @@ export class AdminhomeComponent implements OnInit {
           const formattedPage = { ...page };
           return formattedPage;
         });
-        console.log(this.pages);
+        this.pagesCopy = Object.entries(pages).map(page => {
+          const formattedPage = { ...page };
+          return formattedPage;
+        });
       },
       err => {
         console.log(err.error);
@@ -74,7 +77,43 @@ export class AdminhomeComponent implements OnInit {
     return `#${key}`
   }
 
-  saveBody(page) {
-    console.log(this.pages[page]);
+  saveBody(index, body) {
+    // aboutUs, careers, services, contact_us
+    console.log(index);
+    console.log(body);
+
+    this.data.pages[index] = body;
+    // console.log(this.data.pages);
+    const editBody = {
+      aboutUs: this.data.pages.about_us,
+      careers: this.data.pages.careers,
+      services: this.data.pages.services,
+      contact_us: this.data.pages.contact_us
+    }
+    console.log(editBody);
+
+    this.homeService.editHome(editBody).subscribe(
+      () => {
+        this.homeService.getHome().subscribe(
+          result => {
+            this.home = result;
+            const { data } = this.home;
+            const { pages } = data;
+            this.data = data;
+            this.pages = Object.entries(pages).map(page => {
+              const formattedPage = { ...page };
+              return formattedPage;
+            });
+            this.pagesCopy = Object.entries(pages).map(page => {
+              const formattedPage = { ...page };
+              return formattedPage;
+            });
+          }
+        )
+      },
+      err => {
+        console.log(err.error);
+      }
+    );
   }
 }

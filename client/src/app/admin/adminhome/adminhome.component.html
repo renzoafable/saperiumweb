@@ -12,10 +12,11 @@
     </div>
     <div class="page-body">
       <p [innerHTML]="page[1]"></p>
+      &nbsp;
       <span class="glyphicon glyphicon-edit" data-toggle="collapse" [attr.data-target]="'#' + page[0]"></span>
       <div [attr.id]="page[0]" class="collapse">
-        <angular-editor [config]="editorConfig" [(ngModel)]="htmlContent"></angular-editor>
-        <button (click)="saveTitle(i)">Save</button>
+        <angular-editor [config]="editorConfig" [(ngModel)]="pagesCopy[i][1]"></angular-editor>
+        <button (click)="saveBody(page[0], pagesCopy[i][1])">Save</button>
       </div>
     </div>
   </div>
