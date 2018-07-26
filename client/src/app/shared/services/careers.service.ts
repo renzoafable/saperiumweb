@@ -30,4 +30,20 @@ export class CareersService {
       return throwError(error);
     }));
   }
+
+  viewQuestion(){
+    return this.http.get<any>('http://localhost:3001/api/application/question-all');
+  }
+
+  addApplication(email: String){
+    return this.http.post<any>('http://localhost:3001/api/application/', {email: email});
+  }
+
+  addAnswer(body: String, question_id: Number, application_id: Number){
+    const values = {
+      body: body, question_id: question_id, application_id: application_id
+    }
+    return this.http.post<any>('http://localhost:3001/api/application/answer-add', values);
+  }
+
 }

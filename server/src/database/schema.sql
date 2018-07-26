@@ -320,6 +320,7 @@ GO
 CREATE PROCEDURE add_application( given_email VARCHAR(50) )
    BEGIN INSERT INTO APPLICATION
         VALUES (NULL, given_email);
+        SELECT * from APPLICATION ORDER BY application_id DESC LIMIT 1;
     END;
 GO
 
