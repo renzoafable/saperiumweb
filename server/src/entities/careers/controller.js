@@ -33,6 +33,26 @@ const careersController = (repo) =>{
                     });
                 }
             )
+        },
+
+        getCareers : (req, res, next) => {
+            console.log('entered command');
+            repo.getCareers()
+            .then(
+                result => {
+                    res.status(200);
+                    return res.json({
+                        status: 200, result, message: 'Successfully retrieved!'
+                    });
+                }
+            ).catch(
+                err => {
+                    res.status(500);
+                    return res.json({
+                        status: 500, message: 'Internal server error!'
+                    });
+                }
+            )
         }
     };
 

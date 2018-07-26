@@ -33,8 +33,30 @@ const servicesController = (repo) =>{
                     });
                 }
             )
+        },
+
+        getServices : (req, res, next) => {
+
+            repo.getServices()
+            .then(
+                result => {
+                    res.status(200);
+                    return res.json({
+                        status: 200, result, message: 'Successfully retrieved!'
+                    });
+                }
+            ).catch(
+                err => {
+                    res.status(500);
+                    return res.json({
+                        status: 500, message: 'Internal server error!'
+                    });
+                }
+            )
         }
     };
+
+    
 
     return controller;
 }
