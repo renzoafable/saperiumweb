@@ -210,9 +210,13 @@ CREATE PROCEDURE add_image( file_path LONGTEXT, page_id INT )
     END;
 GO
 
-CREATE PROCEDURE edit_home( about_us LONGTEXT, careers LONGTEXT, services LONGTEXT, contact_us LONGTEXT, application LONGTEXT )
-    BEGIN INSERT INTO HOME
-        VALUES (1, about_us, careers, services, contact_us, application);
+CREATE PROCEDURE edit_home( given_about_us LONGTEXT, given_careers LONGTEXT, given_services LONGTEXT, given_contact_us LONGTEXT, given_application LONGTEXT )
+    BEGIN UPDATE HOME SET
+            about_us = given_about_us,
+            careers = given_careers,
+            services = given_services,
+            contact_us = given_contact_us,
+            application = given_application;
     END;
 GO
 
