@@ -141,7 +141,8 @@ INSERT INTO TESTIMONIAL
 INSERT INTO ABOUT 
                 VALUES (    2,
                             "About Saperium",
-                            "Where do great things come from? It’s not about great companies; it’s not about great organizations. It’s about people doing extraordinary things. Saperium is an elite software company aimed to revolutionize I.T. outsourcing in the Philippines. The team is headed by John Lauer, (http://www.linkedin.com/in/lauerjohn) a former senior executive of Microsoft Corporation. The word Saperium is derived from the Latin sapere aude which means “Dare to be wise!” Our company is all about extraordinary individuals who love technology and want to use their talents to break away from the pack and do great things."
+                            "Where do great things come from? It’s not about great companies; it’s not about great organizations. It’s about people doing extraordinary things. 
+                            Saperium is an elite software company aimed to revolutionize I.T. outsourcing in the Philippines. The team is headed by John Lauer, (http://www.linkedin.com/in/lauerjohn) a former senior executive of Microsoft Corporation. The word Saperium is derived from the Latin sapere aude which means “Dare to be wise!” Our company is all about extraordinary individuals who love technology and want to use their talents to break away from the pack and do great things."
                         );
 
 INSERT INTO CAREERS
