@@ -32,8 +32,6 @@ CREATE TABLE TESTIMONIAL (
     note LONGTEXT NOT NULL,
     name VARCHAR(100) NOT NULL,
     title VARCHAR(100) NOT NULL,
-    image_id INT NOT NULL,
-    FOREIGN KEY (image_id) REFERENCES IMAGE(image_id),
     PRIMARY KEY (testimonial_id)
 );
 
@@ -137,8 +135,7 @@ INSERT INTO TESTIMONIAL
                 VALUES (    NULL,
                             "Any greate change in the world started with someone or some group of people that had an idea and the courage to act on it. They wanted to break free.",
                             "John Lauer",
-                            "President",
-                            1
+                            "President"
                         );      
 
 INSERT INTO ABOUT 
@@ -225,13 +222,13 @@ CREATE PROCEDURE add_testimonial( note LONGTEXT, name VARCHAR(100), title VARCHA
     END;
 GO
 
-CREATE PROCEDURE edit_testimonial( given_testimonial_id INT, given_note LONGTEXT, given_name VARCHAR(100), given_title VARCHAR(100), given_image_id INT )
+CREATE PROCEDURE edit_testimonial( given_testimonial_id INT, given_note LONGTEXT, given_name VARCHAR(100), given_title VARCHAR(100), given_image_id INT, file_path LONGTEXT )
     BEGIN UPDATE TESTIMONIAL SET
             note = given_note,
             name = given_name,
-            title = given_title,
-            image_id = given_image_id
+            title = given_title
         WHERE testimonial_id = given_testimonial_id;
+        CALL add_image(file_path, 6);
     END;
 GO
 
