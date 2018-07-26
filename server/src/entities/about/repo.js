@@ -86,4 +86,4 @@ const repoAbout = function(db) {
   return repo;
 };
 
-module.exports = aboutRepo;
+module.exports = repoAbout;
