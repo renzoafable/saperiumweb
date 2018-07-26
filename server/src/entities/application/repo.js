@@ -6,7 +6,7 @@ const repoApplication = function (db) {
         addApplication: (email) => {
             return new Promise((resolve, reject) => {
                 const queryString = SqlString.format(
-                    `CALL add_application(?)`, email
+                    `CALL add_application(?);`, email
                 );
 
                 db.query(queryString, (err, results) => {

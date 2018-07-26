@@ -1,6 +1,36 @@
 <div class="jumbotron text-center">
   Careers carousel
 </div>
+<div class="panel-group">
+  <div class="panel panel-default">
+
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#collapse1" (click)="viewQuestions()">Apply Now</a>
+      </h4>
+    </div>
+    <div id="collapse1" class="panel-collapse collapse container">
+      <form>
+        <div class="form-group">
+          <input  name="emailAddress" type="email" class="form-control" placeholder="Email Address" [(ngModel)]="emailAddress">
+        </div>
+
+        <div class="form-group" *ngFor="let question of questions; let i = index">
+          <label for="usr">{{i+1}}. {{question.body}}</label>
+          <input [(ngModel)]="answers[i+1]" *ngIf="question.type === 'paragraph'" type="text" class="form-control" id="usr" name="usrinput">
+          <div *ngIf="question.type === 'multiple'">
+            <div class="radio" *ngFor="let choice of question.choices">
+              <label><input [(ngModel)]="answers[i+1]" type="radio" [name]="'optradio' + choice.choice_id" [value]="choice.body">{{choice.body}}</label>
+            </div>
+          </div>
+        </div>
+
+        <button (click)="sendApplication()" type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+
 <div class="col-md-offset-2 col-md-8">
   <div [innerHTML]="title"></div>
   <div [innerHTML]="body"></div>

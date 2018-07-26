@@ -17,7 +17,8 @@ const applicationController = repo => {
           res.status(200);
           return res.json({
             status: 200,
-            message: "Successfully added an application!"
+            message: "Successfully added an application!",
+            data: result[0][0]
           });
         })
         .catch(err => {
