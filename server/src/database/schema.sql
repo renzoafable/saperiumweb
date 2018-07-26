@@ -23,7 +23,6 @@ CREATE TABLE HOME (
     careers LONGTEXT NOT NULL,
     services LONGTEXT NOT NULL,
     contact_us LONGTEXT NOT NULL,
-    application LONGTEXT NOT NULL,
     PRIMARY KEY (id)
 );
 
@@ -128,8 +127,7 @@ INSERT INTO HOME
                             "Our company is all about extraordinary individuals who love technology...",
                             "We are a team of passionate, knowledge-hungry, dynamic and brave individuals...",
                             "Our customers want to enjoy the process of building software together...",
-                            "We are excited to hear from you! For questions about services: services@saperium.com",
-                            "sydney gandaaaaa"
+                            "We are excited to hear from you! For questions about services: services@saperium.com"
                         );
 
 INSERT INTO TESTIMONIAL 
@@ -212,13 +210,12 @@ CREATE PROCEDURE add_image( file_path LONGTEXT, page_id INT )
     END;
 GO
 
-CREATE PROCEDURE edit_home( given_about_us LONGTEXT, given_careers LONGTEXT, given_services LONGTEXT, given_contact_us LONGTEXT, given_application LONGTEXT )
+CREATE PROCEDURE edit_home( given_about_us LONGTEXT, given_careers LONGTEXT, given_services LONGTEXT, given_contact_us LONGTEXT)
     BEGIN UPDATE HOME SET
             about_us = given_about_us,
             careers = given_careers,
             services = given_services,
-            contact_us = given_contact_us,
-            application = given_application;
+            contact_us = given_contact_us;
     END;
 GO
 
