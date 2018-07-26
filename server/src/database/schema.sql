@@ -32,6 +32,7 @@ CREATE TABLE TESTIMONIAL (
     note LONGTEXT NOT NULL,
     name VARCHAR(100) NOT NULL,
     title VARCHAR(100) NOT NULL,
+    file_path LONGTEXT NOT NULL,
     PRIMARY KEY (testimonial_id)
 );
 
@@ -135,7 +136,8 @@ INSERT INTO TESTIMONIAL
                 VALUES (    NULL,
                             "Any greate change in the world started with someone or some group of people that had an idea and the courage to act on it. They wanted to break free.",
                             "John Lauer",
-                            "President"
+                            "President",
+                            "pix.123"
                         );      
 
 INSERT INTO ABOUT 
@@ -220,18 +222,18 @@ CREATE PROCEDURE edit_home( given_about_us LONGTEXT, given_careers LONGTEXT, giv
     END;
 GO
 
-CREATE PROCEDURE add_testimonial( note LONGTEXT, name VARCHAR(100), title VARCHAR(100), image_id INT, file_path LONGTEXT )
+CREATE PROCEDURE add_testimonial( note LONGTEXT, name VARCHAR(100), title VARCHAR(100), file_path LONGTEXT )
     BEGIN INSERT INTO TESTIMONIAL
-        VALUES (NULL, note, name, title, image_id);
-        CALL add_image(file_path, 6);
+        VALUES (NULL, note, name, title, file_path);
     END;
 GO
 
-CREATE PROCEDURE edit_testimonial( given_testimonial_id INT, given_note LONGTEXT, given_name VARCHAR(100), given_title VARCHAR(100), given_image_id INT)
+CREATE PROCEDURE edit_testimonial( given_testimonial_id INT, given_note LONGTEXT, given_name VARCHAR(100), given_title VARCHAR(100), given_file_path LONGTEXT)
     BEGIN UPDATE TESTIMONIAL SET
             note = given_note,
             name = given_name,
-            title = given_title
+            title = given_title,
+            file_path = given_file_path
         WHERE testimonial_id = given_testimonial_id;
     END;
 GO
