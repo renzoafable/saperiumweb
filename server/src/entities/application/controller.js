@@ -29,24 +29,7 @@ const applicationController = repo => {
         });
     },
     viewQuestions: (req, res, next) => {
-      // repo.viewQuestions()
-      // .then(
-      //     result => {
-      //         res.status(200);
-      //         return res.json({
-      //             status: 200, message: 'Successfully viewed all questions!', data: result
-      //         });
-      //     }
-      // ).catch(
-      //     err => {
-      //         res.status(err);
-      //         return res.json({
-      //             status: err, message: 'Internal server error!'
-      //         });
-      //     }
-      // )
       let questions;
-      let choices;
       let multipleChoice = [];
 
       repo
@@ -70,7 +53,7 @@ const applicationController = repo => {
           res.status(200);
           res.json({
             status: 200,
-            message: 'Successfully fetched questions',
+            message: 'Successfully get all questions',
             data: questions
           });
         })
