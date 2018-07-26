@@ -15,7 +15,8 @@ export class CareersComponent implements OnInit {
 
   getCareers() {
     this.careersService.getCareers().subscribe((result) => {
-      console.log(result);
+      this.title = result.result[0].title;
+      this.body = result.result[0].body;
     }, error => {
       console.log(error.error.error);
     });

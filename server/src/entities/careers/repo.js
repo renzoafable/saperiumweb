@@ -17,6 +17,7 @@ const repoCareers = function (db) {
             });
         },
         getCareers: () => {
+            console.log('entered repo');
             return new Promise((resolve, reject) => {
                 const queryString = SqlString.format(
                     `SELECT title, body FROM careers`

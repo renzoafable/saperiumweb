@@ -1,11 +1,12 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-import { SharedModule } from './shared/shared.module';
-import { AppRoutingModule } from './/app-routing.module';
-import { UserModule } from './user/user.module';
 import { AdminModule } from './admin/admin.module';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './/app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { CareersService } from './shared/services/careers.service';
+import { HttpClientModule } from '../../node_modules/@angular/common/http';
+import { NgModule } from '@angular/core';
+import { SharedModule } from './shared/shared.module';
+import { UserModule } from './user/user.module';
 
 @NgModule({
   declarations: [
@@ -14,11 +15,12 @@ import { AdminModule } from './admin/admin.module';
   imports: [
     BrowserModule,
     SharedModule,
+    HttpClientModule,
     AppRoutingModule,
     UserModule,
-    AdminModule
+    AdminModule,
   ],
-  providers: [],
+  providers: [CareersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

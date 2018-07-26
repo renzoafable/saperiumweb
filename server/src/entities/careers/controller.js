@@ -36,7 +36,7 @@ const careersController = (repo) =>{
         },
 
         getCareers : (req, res, next) => {
-
+            console.log('entered command');
             repo.getCareers()
             .then(
                 result => {

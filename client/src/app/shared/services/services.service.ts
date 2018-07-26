@@ -12,19 +12,20 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
-export class CareersService {
+export class ServicesService {
 
   constructor(private http: HttpClient) { }
 
-  getCareers(): Observable<any> {
-    const url = `http://localhost:3001/api/careers/getCareers`;
+  getServices(): Observable<any> {
+    console.log('in');
+    const url = `http://localhost:3001/api/services/getServices`;
     return this.http.get(url).pipe(catchError( (error) => {
       return throwError(error);
     }));
   }
 
-  editCareers(title: string, body: string) {
-    return this.http.put('http://localhost:3001/api/careers/editCareers',
+  editServices(title: string, body: string) {
+    return this.http.put('http://localhost:3001/api/services/editServices',
     {title: title, body: body}, httpOptions)
     .pipe(catchError( (error) => {
       return throwError(error);
