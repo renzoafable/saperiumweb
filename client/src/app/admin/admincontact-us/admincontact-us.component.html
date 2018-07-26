@@ -1,3 +1,46 @@
-<p>
-  admincontact-us works!
-</p>
+<div class="jumbotron text-center">
+  Contact us image
+</div>
+<div class="body">
+  <div class="body col-md-offset-2 col-md-4">
+
+    <h3>{{title}}</h3>
+    <a (click)="editTitle()" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit Title</a>
+    <div *ngIf="isEditingTitle">
+      <h3>Edit Title</h3>
+      <angular-editor [config]="editorConfig" [(ngModel)]="title"></angular-editor>
+      <button (click)="saveTitle(title)">Save</button>
+    </div>
+
+    <h4>Address</h4>
+    <div [innerHTML]="address"></div>
+    <a (click)="editAddress()" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit Address</a>
+    <div *ngIf="isEditingAddress">
+      <h3>Edit Address</h3>
+      <angular-editor [config]="editorConfig" [(ngModel)]="address"></angular-editor>
+      <button (click)="saveAddress(address)">Save</button>
+    </div>
+
+    <h4>Phone Numbers</h4>
+    <ul class="list-unstyled" *ngFor="let phone of phoneNums">
+      <li>{{phone.number}}</li>
+    </ul>
+    <a (click)="editPhones()" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit Phones</a>
+    <div *ngIf="isEditingPhones">
+      <h3>Edit Phones</h3>
+      <angular-editor [config]="editorConfig" [(ngModel)]="phones"></angular-editor>
+      <button (click)="savePhones(phones)">Save</button>
+    </div>
+  </div>
+
+  <div class="body col-md-4">
+    <h3>Talk to us</h3>
+    <p>{{body}}</p>
+    <a (click)="editBody()" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit Body</a>
+    <div *ngIf="isEditingBody">
+      <h3>Edit Body</h3>
+      <angular-editor [config]="editorConfig" [(ngModel)]="body"></angular-editor>
+      <button (click)="saveBody(body)">Save</button>
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 <div class="jumbotron text-center">
   Careers carousel
 </div>
-<div class="body">
+<div class="body col-md-offset-2 col-md-8">
   <a (click)="editTitle()" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit Title</a>
   <a (click)="editBody()" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit Body</a>
   <div>
@@ -17,7 +17,7 @@
   </div>
   <div *ngIf="isEditingBody">
     <h3>Edit Body</h3>
-    <angular-editor [config]="editorConfig" [(ngModel)]="htmlContent"></angular-editor>
-    <button (click)="saveBody(htmlContent)">Save</button>
+    <angular-editor [config]="editorConfig" [(ngModel)]="htmlContent1"></angular-editor>
+    <button (click)="saveBody(htmlContent1)">Save</button>
   </div>
 </div>

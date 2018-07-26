@@ -42,7 +42,7 @@ export class AdminservicesComponent implements OnInit {
   }
 
   editTitle() {
-    this.isEditingTitle = true;
+    this.isEditingTitle = !this.isEditingTitle;
   }
 
   saveBody(text: string) {
@@ -51,7 +51,7 @@ export class AdminservicesComponent implements OnInit {
   }
 
   editBody() {
-    this.isEditingBody = true;
+    this.isEditingBody = !this.isEditingBody;
   }
 
   ngOnInit() {

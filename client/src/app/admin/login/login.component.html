@@ -1,15 +1,10 @@
-<div class="login">
+<div class="login col-md-offset-2 col-md-8">
   <h2>Login</h2>
-  <form>
-  <div class="form-group">
-    <label for="email">Email address</label>
-    <input #emailText type="email" class="form-control" [ngClass]="{'is-invalid':errorMessage}" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-  </div>
+  <form class>
   <div class="form-group is-valid">
     <label for="password">Password</label>
     <input #passwordText type="password" class="form-control" [ngClass]="{'is-invalid':errorMessage}" id="password" placeholder="Password">
   </div>
-  <button type="button" class="btn btn-info" (click)="login(emailText.value, passwordText.value)">Submit</button>
+  <button type="button" class="btn btn-info" (click)="login(passwordText.value)">Submit</button>
   </form>
-  <button type="button" class="btn btn-link" routerLink="/signup">Not yet a user? Sign up!</button>
 </div>
