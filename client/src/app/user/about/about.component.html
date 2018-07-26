@@ -1,30 +1,21 @@
 <div class="jumbotron text-center">
-    About carousel hi packgit
-  </div>
+  ABOUT US
+</div>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-*-*"></div>
-      <div class="col-*-*"></div>
+<div class="container-fluid">
+  <div class="row text-center">
+    <div class="col-sm-4">
+        <div class="panel" *ngFor="let testimonial of testimonials">
+          <img src="../../../assets/johndoe.png" alt="Avatar">
+          <p>{{testimonial.note}}</p>
+          <blockquote class="blockquote-reverse"><h5><span>{{testimonial.name}}, </span> {{testimonial.title}}</h5></blockquote>
+        </div>
     </div>
-    <div class="row">
-      <div class="col-*-*"></div>
-      <div class="col-*-*"></div>
-      <div class="col-*-*"></div>
-    </div>
-    <div class="row">
-      ...
+    <div class="col-sm-8">
+      <h3>{{data.title}}</h3>
+      <div class="mult">{{data.body}}</div>
     </div>
   </div>
+</div>
 <!-- 
-  <div class="container">
-    <img src="../../../assets/johndoe.png" alt="Avatar" style="width:90px">
-    <p><span>Chris Fox.</span> CEO at Mighty Schools.</p>
-    <p>John Doe saved us from a web disaster.</p>
-  </div>
-  
-  <div class="container">
-    <img src="../../../assets/johndoe.png" alt="Avatar" style="width:90px">
-    <p><span >Rebecca Flex.</span> CEO at Company.</p>
-    <p>No one is better than John Doe.</p>
-  </div> -->
+   -->
