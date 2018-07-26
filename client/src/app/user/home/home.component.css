@@ -1,3 +1,7 @@
 .page-body {
-  font-size: 20px;
+  font-size: 17px;
+}
+
+a:link, a:hover, a:visited, a:active {
+  text-decoration: none;
 }

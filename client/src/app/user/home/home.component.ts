@@ -21,7 +21,7 @@ export class HomeComponent implements OnInit {
         const { pages } = data;
         this.data = data;
         this.pages = Object.entries(pages).map(page => {
-          const formattedPage = {...page};
+          const formattedPage = { ...page };
           return formattedPage;
         });
         console.log(this.pages);
@@ -42,6 +42,19 @@ export class HomeComponent implements OnInit {
         return "Services";
       case "careers":
         return "Careers"
+    }
+  }
+
+  setRoute(key) {
+    switch (key) {
+      case "contact_us":
+        return "/contact-us";
+      case "about_us":
+        return "/about";
+      case "services":
+        return "/services";
+      case "careers":
+        return "/careers";
     }
   }
 }
