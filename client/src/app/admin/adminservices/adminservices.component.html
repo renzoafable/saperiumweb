@@ -1,15 +1,14 @@
 <div class="jumbotron text-center">
-    Careers carousel
+  Services carousel
+</div>
+<div class="body">
+  <a (click)="editTitle()" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit Title</a>
+  <a (click)="editBody()" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit Body</a>
+  <div>
+    <div [innerHTML]="title"></div>
   </div>
   <div>
-    <a (click)="editTitle()" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit Title</a>
-    <a (click)="editBody()" class="btn btn-default"><span class="glyphicon glyphicon-edit"></span> Edit Body</a>
-    <div>
-      <div [innerHTML]="title"></div>
-    </div>
-    <div>
-      <div [innerHTML]="body"></div>
-    </div>
+    <div [innerHTML]="body"></div>
   </div>
   <div *ngIf="isEditingTitle">
     <h3>Edit Title</h3>
@@ -21,3 +20,4 @@
     <angular-editor [config]="editorConfig" [(ngModel)]="htmlContent"></angular-editor>
     <button (click)="saveBody(htmlContent)">Save</button>
   </div>
+</div>
