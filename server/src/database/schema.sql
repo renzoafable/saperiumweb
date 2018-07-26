@@ -32,8 +32,6 @@ CREATE TABLE TESTIMONIAL (
     note LONGTEXT NOT NULL,
     name VARCHAR(100) NOT NULL,
     title VARCHAR(100) NOT NULL,
-    image_id INT NOT NULL,
-    FOREIGN KEY (image_id) REFERENCES IMAGE(image_id),
     PRIMARY KEY (testimonial_id)
 );
 
