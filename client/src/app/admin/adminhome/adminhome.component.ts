@@ -79,14 +79,13 @@ export class AdminhomeComponent implements OnInit {
 
   saveBody(index, body) {
     this.data.pages[index] = body;
-    
+
     const editBody = {
       aboutUs: this.data.pages.about_us,
       careers: this.data.pages.careers,
       services: this.data.pages.services,
       contact_us: this.data.pages.contact_us
     }
-    console.log(editBody);
 
     this.homeService.editHome(editBody).subscribe(
       () => {
