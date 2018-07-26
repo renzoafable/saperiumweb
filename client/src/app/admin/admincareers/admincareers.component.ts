@@ -29,7 +29,6 @@ export class AdmincareersComponent implements OnInit {
     uploadUrl: 'v1/images', // if needed
   };
 
-
   getCareers() {
     this.careersService.getCareers().subscribe((result) => {
       this.title = result.result[0].title;
@@ -72,6 +71,8 @@ export class AdmincareersComponent implements OnInit {
     this.body = this.oldbody;
     this.isEditingBody = !this.isEditingBody;
   }
+
+ 
 
   ngOnInit() {
     this.getCareers();
