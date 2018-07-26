@@ -1,3 +1,10 @@
 <div class="jumbotron text-center">
   Home carousel
 </div>
+<div class="row">
+  <div *ngFor="let page of pages" class="col-sm-3 text-center">
+
+    <h2 class="page-header">{{setHeader(page[0])}}</h2>
+    <p class="page-body">{{page[1]}}</p>
+  </div>
+</div>
