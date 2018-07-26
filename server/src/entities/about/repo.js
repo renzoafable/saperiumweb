@@ -29,6 +29,18 @@ const repoAbout = function (db) {
         });
       });
     },
+    getTestimonial: () => {
+      return new Promise((resolve, reject) => {
+        const queryString = SqlString.format(
+          `SELECT * from TESTIMONIAL`
+        );
+
+        db.query(queryString, (err, results) => {
+          if (err) return reject(500);
+          return resolve(results);
+        });
+      });
+    },
     getImages: (id) => {
       return new Promise((resolve, reject) => {
         const queryString = SqlString.format(
@@ -36,15 +48,43 @@ const repoAbout = function (db) {
         );
 
         db.query(queryString, (err, results) => {
-          if (err) {
-            console.log(err);
+          if (err) return reject(500);
+          return resolve(results);
+        });
+      });
+    },
+    addTestimonial: (note, name, title, file_path) => {
+      return new Promise((resolve, reject) => {
+        const values = [note, name, title, file_path];
+        const queryString = SqlString.format(
+          `CALL add_testimonial(?, ?, ?, ?)`, values
+        );
+
+        db.query(queryString, (err, results) => {
+          if (err){
+            console.log(err)
             return reject(500);
           }
           return resolve(results);
         });
       });
     },
-    getTestimonials: () => {}
+    editTestimonial: (testimonial_id, note, name, title, file_path) => {
+      return new Promise((resolve, reject) => {
+        const values = [testimonial_id, note, name, title, file_path];
+        const queryString = SqlString.format(
+          `CALL edit_testimonial(?, ?, ?, ?, ?)`, values
+        );
+
+        db.query(queryString, (err, results) => {
+          if (err){
+            console.log(err)
+            return reject(500);
+          }
+          return resolve(results);
+        });
+      });
+    }
   }
 
   return repo;
