@@ -19,6 +19,7 @@ export class AdmincontactUsComponent implements OnInit {
   body;
   oldbody;
   phoneNums;
+  success;
 
   htmlContent;
   isEditingTitle = false;
@@ -60,7 +61,13 @@ export class AdmincontactUsComponent implements OnInit {
 
   saveTitle(text: string) {
     this.title = text;
+    this.oldtitle = text;
     this.isEditingTitle = false;
+    this.contactUsService.editContactUs(text, this.oldaddress, this.oldbody).subscribe((result) => {
+      console.log(result);
+    }, error => {
+      console.log(error);
+    });
   }
 
   editTitle() {
@@ -70,7 +77,13 @@ export class AdmincontactUsComponent implements OnInit {
 
   saveBody(text: string) {
     this.body = text;
+    this.oldbody = text;
     this.isEditingBody = false;
+    this.contactUsService.editContactUs(this.oldtitle, this.oldaddress, text).subscribe((result) => {
+      console.log(result);
+    }, error => {
+      console.log(error);
+    });
   }
 
   editBody() {
@@ -91,11 +104,25 @@ export class AdmincontactUsComponent implements OnInit {
     this.address = text;
     this.oldaddress = text;
     this.isEditingAddress = false;
+    this.contactUsService.editContactUs(this.oldtitle, text, this.oldbody).subscribe((result) => {
+      console.log(result);
+    }, error => {
+      console.log(error);
+    });
   }
 
   editAddress() {
     this.address = this.oldaddress;
     this.isEditingAddress = !this.isEditingAddress;
+  }
+
+  addMessage(email: string, fn: string, ln: string, body: string) {
+    this.contactUsService.addMessage(email, fn, ln, body).subscribe((result) => {
+      console.log(result);
+      this.success = true;
+    }, error => {
+      console.log(error);
+    });
   }
 
   ngOnInit() {

@@ -3,9 +3,9 @@
 </div>
 <div class="body">
   <div class="col-md-offset-2 col-md-4">
-    <h3>{{title}}</h3>
+    <div [innerHTML]="title"></div>
     <h4>Address</h4>
-    <p>{{address}}</p>
+    <div [innerHTML]="address"></div>
     <h4>Phone Numbers</h4>
     <ul class="list-unstyled" *ngFor="let phone of phoneNums">
       <li>{{phone.number}}</li>
@@ -13,6 +13,6 @@
   </div>
   <div class="col-md-4">
     <h3>Talk to us</h3>
-    <p>{{body}}</p>
+    <div [innerHTML]="body"></div>
   </div>
 </div>

@@ -30,4 +30,20 @@ export class ContactusService {
     }));
   }
 
+  editContactUs(title: string, address: string, body: string) {
+    return this.http.put('http://localhost:3001/api/contactUs/',
+    {title: title, address: address, body: body}, httpOptions)
+    .pipe(catchError( (error) => {
+      return throwError(error);
+    }));
+  }
+
+  addMessage(email: string, fn: string, ln: string, body: string) {
+    return this.http.post('http://localhost:3001/api/contactUs/messages',
+    {email: email, first_name: fn, last_name: ln, body: body}, httpOptions)
+    .pipe(catchError( (error) => {
+      return throwError(error);
+    }));
+  }
+
 }

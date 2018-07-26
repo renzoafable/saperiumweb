@@ -14,6 +14,8 @@ export class AdminservicesComponent implements OnInit {
 
   title;
   body;
+  oldtitle;
+  oldbody;
   isEditingTitle = false;
   isEditingBody = false;
 
@@ -30,7 +32,9 @@ export class AdminservicesComponent implements OnInit {
   getServices() {
     this.servicesService.getServices().subscribe((result) => {
       this.title = result.result[0].title;
+      this.oldtitle = result.result[0].title;
       this.body = result.result[0].body;
+      this.oldbody = result.result[0].body;
     }, error => {
       console.log(error);
     });
@@ -38,19 +42,33 @@ export class AdminservicesComponent implements OnInit {
 
   saveTitle(text: string) {
     this.title = text;
+    this.oldtitle = text;
     this.isEditingTitle = false;
+    this.servicesService.editServices(text, this.body).subscribe((result) => {
+      console.log(result);
+    }, error => {
+      console.log(error);
+    });
   }
 
   editTitle() {
+    this.title = this.oldtitle;
     this.isEditingTitle = !this.isEditingTitle;
   }
 
   saveBody(text: string) {
     this.body = text;
+    this.oldbody = text;
     this.isEditingBody = false;
+    this.servicesService.editServices(this.title, text).subscribe((result) => {
+      console.log(result);
+    }, error => {
+      console.log(error);
+    });
   }
 
   editBody() {
+    this.body = this.oldbody;
     this.isEditingBody = !this.isEditingBody;
   }
 
