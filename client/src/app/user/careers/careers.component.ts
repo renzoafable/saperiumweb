@@ -16,6 +16,8 @@ export class CareersComponent implements OnInit {
   emailAddress;
   questions;
   answers = {};
+  emptyEmail = true;
+
 
   constructor(private careersService: CareersService) {}
 
@@ -60,9 +62,13 @@ export class CareersComponent implements OnInit {
     );
   }
 
+  checkInput(){
+    this.emptyEmail = true;
+    if(this.emailAddress) this.emptyEmail = false;
+    else this.emptyEmail = true;
+  }
+
   sendApplication() {
-    console.log(this.answers);
-    console.log(this.emailAddress);
     this.careersService.addApplication(this.emailAddress).subscribe(
       (result) => {
         const application_ID = result.data.application_id;

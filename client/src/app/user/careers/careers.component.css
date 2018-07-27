@@ -10,3 +10,18 @@
   width: 900px;
   margin: auto;
 }
+
+.prompt {
+  color: red !important;
+  float: right;
+}
+
+#collapse1{
+  width: 80%;
+  margin: auto;
+}
+
+.panel-group {
+
+  padding-bottom: 50px;
+}
