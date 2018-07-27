@@ -331,3 +331,13 @@ CREATE PROCEDURE view_question()
 GO
 
 DELIMITER ;
+
+call add_question("paragraph", "How you doing?");
+call add_question("multiple", "Which is the best series to watch?");
+call add_choice(2, "Friends");
+call add_choice(2, "HIMYM");
+call add_choice(2, "Big Bang Theory");
+call add_question("paragraph", "Do you know the way?");
+call add_question("multiple", "Saperium the best.");
+call add_choice(4, "True");
+call add_choice(4, "Very True");
