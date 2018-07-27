@@ -22,3 +22,12 @@ a {
 span {
   cursor: pointer;
 }
+
+.carousel-inner > .item > img{
+  margin:auto;
+  }
+
+  #myCarousel {
+    width: 900px;
+    margin: auto;
+  }

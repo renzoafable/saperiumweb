@@ -10,3 +10,12 @@
 a:link, a:hover, a:visited, a:active {
   text-decoration: none;
 }
+
+.carousel-inner > .item > img{
+  margin:auto;
+  }
+
+  #myCarousel {
+    width: 900px;
+    margin: auto;
+  }
